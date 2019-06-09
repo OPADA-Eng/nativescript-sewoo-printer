@@ -1,34 +1,45 @@
 import { Observable } from "tns-core-modules/data/observable";
 import { SewooPrinter } from 'nativescript-sewoo-printer';
-import * as imageModule from 'tns-core-modules/ui/image';
-import * as imageSrc from 'tns-core-modules/image-source';
-import * as Image from "tns-core-modules/ui/image";
+// import * as imageModule from 'tns-core-modules/ui/image';
+// import * as imageSrc from 'tns-core-modules/image-source';
+// import * as Image from "tns-core-modules/ui/image";
 declare var android;
 
 export class HomeViewModel extends Observable {
     public printer: SewooPrinter;
+    private _printerAddress = "00:13:7B:49:D3:1A";
+    public textToPrint = "";
+    public connectVisible = true;
+    public disconnectVisible = false;
     constructor(public page) {
         super();
         this.printer = new SewooPrinter("windows-1256");
 
     }
-
+    public get printerAddress() {
+        return this._printerAddress;
+    }
+    public set printerAddress(printerAddress: string) {
+        this._printerAddress = printerAddress;
+    }
     public screenShot(view) {
         view.android.setDrawingCacheEnabled(true);
         view.android.buildDrawingCache(true);
         var bmp = android.graphics.Bitmap.createBitmap(view.android.getDrawingCache());
         view.android.setDrawingCacheEnabled(false);
-        var source = new imageSrc.ImageSource();
-        source.setNativeSource(bmp);
-        let image = new Image.Image();
-        image.src = source;
-        let sView = this.page.getViewById('screenShots');
-        sView.addChild(image);
+        // var source = new imageSrc.ImageSource();
+        // source.setNativeSource(bmp);
+        // let image = new Image.Image();
+        // image.src = source;
+        // let sView = this.page.getViewById('screenShots');
+        // sView.addChild(image);
         return bmp;
     }
     connect() {
         try {
-            this.printer.connect("00:13:7B:49:D3:1A");
+            this.printer.connect(this.printerAddress);
+            this.set('connectVisible', false);
+            this.set('disconnectVisible', true);
         }
         catch (e) {
             console.log(e);
@@ -36,6 +47,8 @@ export class HomeViewModel extends Observable {
     }
     disconnect() {
         this.printer.disconnect();
+        this.set('connectVisible', true);
+        this.set('disconnectVisible', false);
     }
 
     printImg() {
@@ -46,13 +59,15 @@ export class HomeViewModel extends Observable {
         this.printer.printImg(imageSource);
         // this.printer.print("Hello World");
     }
-    printImgPath() {
-        this.printer.printImgPath("//emulated//0//WhatsApp//Media//WhatsApp Images//IMG-20181206-WA0005.jpeg");
-    }
+
     print() {
         // let imageSource = this.screenShot(this.page.getViewById("printArea"));
         // this.printer.printImg("//sdcard//temp//test//Sewoo_bw_m.jpg");
-        this.printer.print("مرحبا");
-        this.printer.print("Hello");
+        if (this.textToPrint != '') {
+            this.printer.print(this.textToPrint);
+        }
+        else {
+            this.printer.print("Hello World");
+        }
     }
 }

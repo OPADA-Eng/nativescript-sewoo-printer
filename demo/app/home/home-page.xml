@@ -9,18 +9,27 @@
     <ScrollView>
         <StackLayout>
         <!-- Add your page content here -->
-            <StackLayout id="printArea" backgroundColor="#ffffff">
-                <Label text="Hello world ... :)" textWrap="true" />
-                <Label text="This Screenshot is shit" textWrap="true" />
-            </StackLayout> 
-            <StackLayout id="screenShots">
-                <Label text="ScreenShots" textWrap="true" />
+            <GridLayout rows="auto" columns="*,auto">
+                <TextField col="0" hint="Add Printer Address Here" text="{{ printerAddress }}" />
+                <Button col="1" text="Connect" visibility="{{ connectVisible ? 'visible' : 'collapse' }}" tap="{{ connect }}" />
+                <Button col="1" text="Disconnect" visibility="{{ disconnectVisible ? 'visible' : 'collapse' }}"  tap="{{ disconnect }}" />
                 
-            </StackLayout> 
-            <Button text="Connect" tap="{{ connect }}" />
-            <Button text="Disconnect" tap="{{ disconnect }}" />
-            <Button text="Print" tap="{{ print }}" />
-            <Button text="Print Screen" tap="{{ printImg }}" />
+            </GridLayout>
+            
+            <StackLayout visibility="{{ disconnectVisible ? 'visible' : 'collapse' }}" marginBottom="10">
+                <Label text="This Content Will be printed with screenshot button"  textWrap="true" />
+                <StackLayout id="printArea" backgroundColor="#ffffff">
+                    <Label text="Hello world ... :)" textWrap="true" />
+                    <Label text="This Screenshot is shit" textWrap="true" />
+                </StackLayout> 
+                <Button text="Print Screen" tap="{{ printImg }}" />
+            </StackLayout>
+           
+            <StackLayout visibility="{{ disconnectVisible ? 'visible' : 'collapse' }}" >
+                <TextField col="0" hint="Add text here to print..." text="{{ textToPrint }}" />
+                <Button text="Print" tap="{{ print }}" />
+            </StackLayout>
+                
             
         </StackLayout>
     </ScrollView>
