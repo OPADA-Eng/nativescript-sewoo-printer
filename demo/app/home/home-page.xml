@@ -6,7 +6,22 @@
         <Label class="action-bar-title" text="Home"></Label>
     </ActionBar>
 
-    <GridLayout>
+    <ScrollView>
+        <StackLayout>
         <!-- Add your page content here -->
-    </GridLayout>
+            <StackLayout id="printArea" backgroundColor="#ffffff">
+                <Label text="Hello world ... :)" textWrap="true" />
+                <Label text="This Screenshot is shit" textWrap="true" />
+            </StackLayout> 
+            <StackLayout id="screenShots">
+                <Label text="ScreenShots" textWrap="true" />
+                
+            </StackLayout> 
+            <Button text="Connect" tap="{{ connect }}" />
+            <Button text="Disconnect" tap="{{ disconnect }}" />
+            <Button text="Print" tap="{{ print }}" />
+            <Button text="Print Screen" tap="{{ printImg }}" />
+            
+        </StackLayout>
+    </ScrollView>
 </Page>
