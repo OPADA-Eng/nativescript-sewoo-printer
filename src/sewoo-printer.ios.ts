@@ -1,8 +1,13 @@
 import { Common } from './sewoo-printer.common';
 
 export class SewooPrinter extends Common {
-
-    public print(){
-        console.log("printing ...");
+    constructor() {
+        super();
+    }
+    public print() {
+        console.log("This functionality is not available right now ...");
+    }
+    public printImg() {
+        console.log("This functionality is not available right now ...");
     }
 }

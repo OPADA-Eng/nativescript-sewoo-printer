@@ -9,15 +9,25 @@ export class SewooPrinter extends Common {
     public bluetoothPermissions: BluetoothPermissions;
     public hThread: java.lang.Thread;
     public address: string = "";
-    constructor(charset: string = "") {
+    constructor(charset = "", paperSize = 0) {
         super();
+        if (charset != '') {
+            this.charset = charset;
+        }
+        if (paperSize > 0) {
+            this.paperSize = paperSize;
+        }
         this.bluetoothPermissions = new BluetoothPermissions();
         if (!this.bluetoothPermissions.coarseLocationPermissionGranted()) {
             this.bluetoothPermissions.requestCoarseLocationPermission();
         }
         this.bluetoothAdapter = android.bluetooth.BluetoothAdapter.getDefaultAdapter();
         this.ptrConn = new com.sewoo.port.android.BluetoothPort();
-        this.cPCLPrinter = new com.sewoo.jpos.printer.CPCLPrinter(charset);
+        // console.log("constructing SewooPrinter", this.charset);
+        if (this.charset != '')
+            this.cPCLPrinter = new com.sewoo.jpos.printer.CPCLPrinter(this.charset);
+        else
+            this.cPCLPrinter = new com.sewoo.jpos.printer.CPCLPrinter();
 
     }
 
@@ -85,22 +95,7 @@ export class SewooPrinter extends Common {
             console.log("printer is not connected");
         }
     }
-    // printImgPath(path: string) {
-    //     if (this.ptrConn.isConnected()) {
-    //         this.cPCLPrinter.setForm(0, 200, 200, 576, 1);
-    //         this.cPCLPrinter.setMedia(com.sewoo.jpos.command.CPCLConst.LK_CPCL_CONTINUOUS);
-    //         // console.dir(self.cPCLPrinter);
-    //         try {
-    //             let res = this.cPCLPrinter.printBitmap(path, 1, 1);
-    //             console.log("printed? --> " + (res == -1 ? "No" : "Yes"));
-    //         }
-    //         catch (e) {
-    //             console.log(e);
-    //         }
-    //         this.cPCLPrinter.printForm();
-    //     }
 
-    // }
     public print(text: string) {
 
         if (this.ptrConn.isConnected()) {

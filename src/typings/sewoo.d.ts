@@ -1,4 +1,4 @@
-/// <reference path="android-declarations.d.ts"/>
+//// <reference path="android-declarations.d.ts"/>
 
 declare module com {
 	export module sewoo {
@@ -2572,7 +2572,7 @@ declare module com {
 					public sendRecvMSRData(param0: native.Array<number>, param1: number): void;
 				}
 				export module BaseMSR {
-					export class MSRReaderTask extends globalAndroid.os.AsyncTask<java.lang.Void,java.lang.Void,java.lang.Void> {
+					export class MSRReaderTask extends globalAndroid.os.AsyncTask<java.lang.Void, java.lang.Void, java.lang.Void> {
 						public static class: java.lang.Class<com.sewoo.request.android.BaseMSR.MSRReaderTask>;
 						public constructor(param0: com.sewoo.request.android.BaseMSR);
 						public constructor(param0: com.sewoo.request.android.BaseMSR, param1: number);
