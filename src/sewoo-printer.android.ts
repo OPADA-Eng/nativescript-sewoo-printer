@@ -47,7 +47,9 @@ export class SewooPrinter extends Common {
 
         return Toast.makeText(application.android.context, text, d);
     }
-
+    public isConnected() {
+        return this.ptrConn.isConnected();
+    }
 
     public connect(address: string) {
         if (this.ptrConn != null && address != '') {
@@ -76,9 +78,9 @@ export class SewooPrinter extends Common {
     }
 
 
-    public printImg(bitmap: globalAndroid.graphics.Bitmap, startX = 0, startY = 0) {
+    public printImg(bitmap: globalAndroid.graphics.Bitmap, XResol = 200, YResol = 200, startX = 0, startY = 0) {
         if (this.ptrConn.isConnected()) {
-            this.cPCLPrinter.setForm(0, 200, 200, bitmap.getHeight() + 100, 1);
+            this.cPCLPrinter.setForm(0, XResol, YResol, bitmap.getHeight() + 100, 1);
             this.cPCLPrinter.setMedia(com.sewoo.jpos.command.CPCLConst.LK_CPCL_CONTINUOUS);
             // console.dir(self.cPCLPrinter);
             // console.log("Width×Height: ", bitmap.getWidth(), bitmap.getHeight());

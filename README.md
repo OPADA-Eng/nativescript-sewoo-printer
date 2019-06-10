@@ -15,7 +15,11 @@ tns plugin add nativescript-sewoo-printer
 ```
 
 ## Usage 
-
+First of all put these permissions in you AndroidManifest.xml file:
+    ```
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+  	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    ```
 To Print Normal Text use:
 	
 	```
