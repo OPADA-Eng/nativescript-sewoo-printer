@@ -1,39 +1,46 @@
-# Your Plugin Name
+# NativeScript Sewoo Printer
 
-Add your plugin badges here. See [nativescript-urlhandler](https://github.com/hypery2k/nativescript-urlhandler) for example.
+[![npm version](https://badge.fury.io/gh/OPADA-Eng/nativescript-sewoo-printer.svg)](http://badge.fury.io/js/nativescript-sewoo-printer)
 
-Then describe what's the purpose of your plugin. 
+This plugin integrate your nativescript app with  `Sewoo LK-P43Ⅱ` printer to print a normal text or a bmp.
 
-In case you develop UI plugin, this is where you can add some screenshots.
+## Prerequisites / Requirements
 
-## (Optional) Prerequisites / Requirements
-
-Describe the prerequisites that the user need to have installed before using your plugin. See [nativescript-firebase plugin](https://github.com/eddyverbruggen/nativescript-plugin-firebase) for example.
+You have to pair your device via bluetooth with the printer before you test the plugin.
 
 ## Installation
 
-Describe your plugin installation steps. Ideally it would be something like:
-
-```javascript
-tns plugin add <your-plugin-name>
+```
+tns plugin add nativescript-sewoo-printer
 ```
 
 ## Usage 
 
-Describe any usage specifics for your plugin. Give examples for Android, iOS, Angular if needed. See [nativescript-drop-down](https://www.npmjs.com/package/nativescript-drop-down) for example.
+To Print Normal Text use:
 	
-	```javascript
-    Usage code snippets here
-    ```)
+	```
+    let printer = new SewooPrinter("windows-1256");
+    printer.print("Hello World");
+    ```
+To Print a BMP image:
 
+    ```
+    let printer = new SewooPrinter("windows-1256");
+    printer.printImg(bmp);
+    ```
+for more information see [the demo](https://github.com/OPADA-Eng/nativescript-sewoo-printer/tree/master/demo) 
 ## API
-
-Describe your plugin methods and properties here. See [nativescript-feedback](https://github.com/EddyVerbruggen/nativescript-feedback) for example.
     
 | Property | Default | Description |
 | --- | --- | --- |
-| some property | property default value | property description, default values, etc.. |
-| another property | property default value | property description, default values, etc.. |
+| paperSize | PaperSizes.FourInch | set the default paper size for the printer |
+    
+| Function  | Description | Params
+| --- | --- |
+| connect(address:string):void | connect to a printer using its address |  address:string ex: "00:13:7B:49:D3:1A"
+| disconnect():void | disconnect from a printer  |
+| print(text: string): void| print normal text  | text : the text you want to print
+| printImg(bitmap: globalAndroid.graphics.Bitmap, startX?: number, startY?: number): void; | disconnect from a printer  | bitmap: the image to print, startX:number specify the position on the paper to start print from on X axis default "0", startY:number specify the position on the paper to start print from on Y axis default "0"
     
 ## License
 

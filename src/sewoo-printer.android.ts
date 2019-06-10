@@ -104,8 +104,8 @@ export class SewooPrinter extends Common {
     public print(text: string) {
 
         if (this.ptrConn.isConnected()) {
-            // console.log("printing: " + text);
-            this.cPCLPrinter.setForm(0, 200, 200, 50, 1);
+            // console.log("printing: " + text);    
+            this.cPCLPrinter.setForm(0, 200, 200, 100, 1);
             this.cPCLPrinter.setMedia(com.sewoo.jpos.command.CPCLConst.LK_CPCL_CONTINUOUS);
             this.cPCLPrinter.printAndroidFont(text, this.paperSize, 26, 0, com.sewoo.jpos.command.ESCPOSConst.LK_ALIGNMENT_CENTER);;
             // this.cPCLPrinter.printCPCL2DBarCode(0, com.sewoo.jpos.command.CPCLConst.LK_CPCL_BCS_QRCODE, 150, 400, 5, 0, 1, 0, "http://www.miniprinter.com");

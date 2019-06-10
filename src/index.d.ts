@@ -1,4 +1,5 @@
 import { Common } from './sewoo-printer.common';
+import { BluetoothPermissions } from '../../../src/android/android_main';
 export declare class SewooPrinter extends Common {
   // define your typings manually
   // or..
@@ -13,6 +14,5 @@ export declare class SewooPrinter extends Common {
   connect(address: string): void;
   disconnect(): void;
   printImg(bitmap: globalAndroid.graphics.Bitmap): void;
-  printImgPath(path: string): void;
   print(text: string): void;
 }

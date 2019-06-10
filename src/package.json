@@ -1,7 +1,7 @@
 {
 	"name": "nativescript-sewoo-printer",
 	"version": "1.0.0",
-	"description": "Your awesome NativeScript plugin.",
+	"description": "NativeScript plugin for integrating CPCL Sewoo pritners.",
 	"main": "sewoo-printer",
 	"typings": "index.d.ts",
 	"nativescript": {
@@ -36,8 +36,8 @@
 		"iOS"
 	],
 	"author": {
-		"name": "Your Name",
-		"email": "youremail@yourdomain.com"
+		"name": "Mohammad Opada Al-Bosh",
+		"email": "m.opada.albosh@gmail.com"
 	},
 	"bugs": {
 		"url": "https://github.com/OPADA-Eng/nativescript-sewoo-printer/issues"
