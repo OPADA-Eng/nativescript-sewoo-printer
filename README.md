@@ -37,7 +37,7 @@ for more information see [the demo](https://github.com/OPADA-Eng/nativescript-se
     
 
 | Function  | Description | Params |
-| --- | --- |
+| --- | --- | --- |
 | connect(address:string):void | connect to a printer using its address |  address:string ex: "00:13:7B:49:D3:1A" |
 | disconnect():void | disconnect from a printer  |
 | print(text: string): void| print normal text  | text : the text you want to print |
