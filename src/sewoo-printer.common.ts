@@ -9,6 +9,7 @@ export enum PaperSizes {
 export class Common extends Observable {
   public paperSize: number = PaperSizes.FourInch;
   public charset: string = '';
+  public debug: boolean = false;
   constructor() {
     super();
   }

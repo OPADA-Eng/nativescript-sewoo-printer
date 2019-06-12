@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-sewoo-printer",
-	"version": "1.0.3",
+	"version": "1.0.7",
 	"description": "NativeScript plugin for integrating CPCL Sewoo pritners.",
 	"main": "sewoo-printer",
 	"typings": "index.d.ts",

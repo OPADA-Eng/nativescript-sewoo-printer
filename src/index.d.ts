@@ -1,6 +1,6 @@
 import { Common } from './sewoo-printer.common';
 import { BluetoothPermissions } from './android/android_main';
-declare let android,com,java;
+declare let android: any, com: any, java: any;
 export declare class SewooPrinter extends Common {
   // define your typings manually
   // or..
@@ -11,10 +11,12 @@ export declare class SewooPrinter extends Common {
   bluetoothPermissions: BluetoothPermissions;
   hThread: java.lang.Thread;
   address: string;
+  debug: boolean;
   constructor(charset?: string, paperSize?: number);
   Toast(text: any, duration: any): globalAndroid.widget.Toast;
   connect(address: string): void;
   disconnect(): void;
-  printImg(bitmap: globalAndroid.graphics.Bitmap, XResol?: number, YResol?: number, startX?: number, startY?: number): void;
+  isConnected(): boolean;
+  printImg(bitmap: globalAndroid.graphics.Bitmap, setExtraPaddingAfterPrint?: boolean, XResol?: number, YResol?: number, startX?: number, startY?: number): void;
   print(text: string): void;
 }

@@ -60,10 +60,15 @@ export class SewooPrinter extends Common {
                 this.hThread.start();
                 this.address = address;
                 this.Toast("Connected To: " + address, "long").show();
+                if(this.debug)
+                    console.log("Connected To: " + address);
             }
             else {
                 this.bluetoothAdapter.enable();
-                this.ptrConn.connect(address);
+                this.Toast("Bluetooth enabled press button again to connect ", "long").show();
+                if(this.debug)
+                    console.log("Bluetooth enabled press button again to connect ");
+                // this.ptrConn.connect(address);
             }
         }
     }
@@ -72,20 +77,29 @@ export class SewooPrinter extends Common {
         if (this.ptrConn != null) {
             this.ptrConn.disconnect();
             this.Toast("Disconnected From: " + this.address, "long").show();
+            if(this.debug)
+                    console.log("Disconnected From: " + this.address);
             if ((this.hThread != null) && (this.hThread.isAlive()))
                 this.hThread.interrupt();
         }
     }
 
 
-    public printImg(bitmap: globalAndroid.graphics.Bitmap, XResol = 200, YResol = 200, startX = 0, startY = 0) {
+    public printImg(bitmap: globalAndroid.graphics.Bitmap,setExtraPaddingAfterPrint = true, XResol = 200, YResol = 200, startX = 0, startY = 0) {
         if (this.ptrConn.isConnected()) {
-            this.cPCLPrinter.setForm(0, XResol, YResol, bitmap.getHeight() + 100, 1);
+            let lableHieght = bitmap.getHeight();
+            if(setExtraPaddingAfterPrint){
+                lableHieght += 100;
+            }
+            this.cPCLPrinter.setForm(0, XResol, YResol,  lableHieght, 1);
             this.cPCLPrinter.setMedia(com.sewoo.jpos.command.CPCLConst.LK_CPCL_CONTINUOUS);
-            // console.dir(self.cPCLPrinter);
+            // console.dir(self.cPCLPrinter);   
             // console.log("Width×Height: ", bitmap.getWidth(), bitmap.getHeight());
             try {
                 // let ScaledBMP = android.graphics.Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight());
+                this.Toast("Printing Image ...", "long").show();
+                if(this.debug)
+                    console.log("Printing Image ...");
                 this.cPCLPrinter.printBitmap(bitmap, startX, startY);
             }
             catch (e) {
@@ -95,6 +109,7 @@ export class SewooPrinter extends Common {
         }
         else {
             console.log("printer is not connected");
+            this.Toast("Printer is not connected", "long").show();
         }
     }
 
@@ -104,12 +119,16 @@ export class SewooPrinter extends Common {
             // console.log("printing: " + text);    
             this.cPCLPrinter.setForm(0, 200, 200, 100, 1);
             this.cPCLPrinter.setMedia(com.sewoo.jpos.command.CPCLConst.LK_CPCL_CONTINUOUS);
-            this.cPCLPrinter.printAndroidFont(text, this.paperSize, 26, 0, com.sewoo.jpos.command.ESCPOSConst.LK_ALIGNMENT_CENTER);;
+            this.cPCLPrinter.printAndroidFont(text, this.paperSize, 26, 0, com.sewoo.jpos.command.ESCPOSConst.LK_ALIGNMENT_CENTER);
             // this.cPCLPrinter.printCPCL2DBarCode(0, com.sewoo.jpos.command.CPCLConst.LK_CPCL_BCS_QRCODE, 150, 400, 5, 0, 1, 0, "http://www.miniprinter.com");
+            this.Toast("Printing Text ...", "long").show();
+                if(this.debug)
+                    console.log("Printing Text ...");
             this.cPCLPrinter.printForm();
         }
         else {
             console.log("printer is not connected");
+            this.Toast("Printer is not connected", "long").show();
         }
     }
 }
