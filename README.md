@@ -34,7 +34,7 @@ let printer = new SewooPrinter("windows-1256");
 printer.printImg(bmp);
 ```
 for more information see [the demo](https://github.com/OPADA-Eng/nativescript-sewoo-printer/tree/master/demo) 
-## API
+## API Property
     
 | Property | type | Default | Description |
 | --- | --- | --- | --- |
@@ -42,6 +42,7 @@ for more information see [the demo](https://github.com/OPADA-Eng/nativescript-se
 | debug | boolean | false | set the plugin in debug mode |
 | charset | string | '' | set the plugin encoding charset |
     
+## API Functions
 
 | Function  | Description | Params |
 | --- | --- | --- |
