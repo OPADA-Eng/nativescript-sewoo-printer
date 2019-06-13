@@ -17,20 +17,20 @@ tns plugin add nativescript-sewoo-printer
 ## Usage 
 First of all put these permissions in you AndroidManifest.xml file:
 
-    ```<uses-permission android:name="android.permission.BLUETOOTH" />
-
+    ```
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     ```
 To Print Normal Text use:
 	
-	```let printer = new SewooPrinter("windows-1256");
-
+	```
+    let printer = new SewooPrinter("windows-1256");
     printer.print("Hello World");
     ```
 To Print a BMP image:
 
-    ```let printer = new SewooPrinter("windows-1256");
-    
+    ```
+    let printer = new SewooPrinter("windows-1256");
     printer.printImg(bmp);
     ```
 for more information see [the demo](https://github.com/OPADA-Eng/nativescript-sewoo-printer/tree/master/demo) 
@@ -39,6 +39,7 @@ for more information see [the demo](https://github.com/OPADA-Eng/nativescript-se
 | Property | Default | Description |
 | --- | --- | --- |
 | paperSize | PaperSizes.FourInch | set the default paper size for the printer |
+| debug | false | set the plugin in debug mode |
     
 
 | Function  | Description | Params |
