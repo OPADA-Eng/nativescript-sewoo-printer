@@ -36,10 +36,11 @@ To Print a BMP image:
 for more information see [the demo](https://github.com/OPADA-Eng/nativescript-sewoo-printer/tree/master/demo) 
 ## API
     
-| Property | Default | Description |
-| --- | --- | --- |
-| paperSize | PaperSizes.FourInch | set the default paper size for the printer |
-| debug | false | set the plugin in debug mode |
+| Property | type | Default | Description |
+| --- | --- | --- | --- |
+| paperSize | enum | PaperSizes.FourInch | set the default paper size for the printer |
+| debug | boolean | false | set the plugin in debug mode |
+| charset | string | '' | set the plugin encoding charset |
     
 
 | Function  | Description | Params |
@@ -47,7 +48,7 @@ for more information see [the demo](https://github.com/OPADA-Eng/nativescript-se
 | connect(address:string):void | connect to a printer using its address |  address:string ex: "00:13:7B:49:D3:1A" |
 | disconnect():void | disconnect from a printer  |
 | print(text: string): void| print normal text  | text : the text you want to print |
-| printImg(bitmap: globalAndroid.graphics.Bitmap, startX?: number, startY?: number): void; | disconnect from a printer  | bitmap: the image to print, startX:number specify the position on the paper to start print from on X axis default "0", startY:number specify the position on the paper to start print from on Y axis default "0" |
+|   printImg(bitmap: globalAndroid.graphics.Bitmap, setExtraPaddingAfterPrint?: boolean, XResol?: number, YResol?: number, startX?: number, startY?: number): void;| print normal bitmap  | bitmap: the image to print, setExtraPaddingAfterPrint: set extra padding after print default true, XResol: x resolution,YResol: y resolution startX:number specify the position on the paper to start print from on X axis default "0", startY:number specify the position on the paper to start print from on Y axis default "0" |
     
 ## License
 
