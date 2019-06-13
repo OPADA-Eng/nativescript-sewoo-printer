@@ -1,0 +1,1 @@
+module libPrinter_183b { explicit module libPrinter_183b { header "CallbackData.h" header "EABluetoothPort.h" header "EPLPrinter.h" header "ESCPOSPrinter.h" header "POSPrinterFinder.h" header "PortDirect.h" header "PortInterface.h" header "WiFiPortInterface.h" header "ZPLPrinter.h" header "libPrinter_183b.h" } }

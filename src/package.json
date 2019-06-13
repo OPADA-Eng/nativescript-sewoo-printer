@@ -54,6 +54,8 @@
 		"tslint": "^5.12.1",
 		"semver": "^5.6.0"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"balanced-match": "^1.0.0"
+	},
 	"bootstrapper": "nativescript-plugin-seed"
 }

@@ -1,6 +1,6 @@
 # NativeScript Sewoo Printer
 
-[![npm version](https://badge.fury.io/gh/OPADA-Eng/nativescript-sewoo-printer.svg)](http://badge.fury.io/js/nativescript-sewoo-printer)
+[![npm version](https://badge.fury.io/js/nativescript-sewoo-printer.svg)](https://badge.fury.io/js/nativescript-sewoo-printer)
 
 This plugin integrate your nativescript app with  `Sewoo LK-P43Ⅱ` printer to print a normal text or a bmp.
 
@@ -16,9 +16,8 @@ tns plugin add nativescript-sewoo-printer
 
 ## Usage 
 First of all put these permissions in you AndroidManifest.xml file:
-    ```
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-  	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    ```<uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     ```
 To Print Normal Text use:
 	
